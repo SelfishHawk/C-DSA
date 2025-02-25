@@ -12,6 +12,10 @@ class node{
     }
 };
 void insert(node* &head,int d,int pos){
+    if(head==NULL){
+        node*temp=new node(d);
+        head=temp;
+    }
     if(pos==1){
         node* temp=new node(d);
         temp->next=head;

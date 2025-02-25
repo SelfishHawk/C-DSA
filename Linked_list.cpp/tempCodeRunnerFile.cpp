@@ -1,2 +1,0 @@
-
-    deletehead(head,2);
