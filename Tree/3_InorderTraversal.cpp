@@ -27,9 +27,18 @@ node *buildtree()
     root->right = buildtree();
     return root;
 }
+void inorder(node* &root){
+    // left node right
+    if(root == NULL) return;
+    inorder(root->left);
+    cout<< root->data<< " ";
+    inorder(root->right);
+}
 int main()
 {
     node *root = NULL;
-    root=buildtree();
+    root =buildtree();
+    cout<<"inorder traversal "<<endl;
+    inorder(root);
     return 0;
 }
