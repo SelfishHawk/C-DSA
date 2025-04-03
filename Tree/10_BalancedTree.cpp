@@ -59,6 +59,7 @@ bool isBalanced(node* &root){
     bool rightAns=right.first;
     bool diff=abs(left.second-right.second)<=1;
     pair<bool,int> ans;
+    ans.second=max(left.second,right.second)+1;
     if(leftAns && rightAns && diff){
         ans.first=true;
     }
