@@ -27,6 +27,7 @@ node *buildtree()
     root->right = buildtree();
     return root;
 }
+/*
 int height(node* &root){
     if(root==NULL) return 0;
     int left=height(root->left);
@@ -46,10 +47,30 @@ bool isBalanced(node* &root){
         return false;
     }
 }
+    */
+   pair<bool,int> isBalanced(node* &root){
+    if(root==NULL){
+        pair<bool,int> p = make_pair(true, 0);
+        return p;
+    }
+    pair<int,int> left=isBalanced(root->left);
+    pair<int,int> right=isBalanced(root->right);
+    bool leftAns=left.first;
+    bool rightAns=right.first;
+    bool diff=abs(left.second-right.second)<=1;
+    pair<bool,int> ans;
+    if(leftAns && rightAns && diff){
+        ans.first=true;
+    }
+    else{
+        ans.first=false;
+    }
+    return ans;
+   }
 int main()
 {
     node *root = NULL;
     root=buildtree();
-    cout<<isBalanced(root);
+    cout<<isBalanced(root).first;
     return 0;
 }
